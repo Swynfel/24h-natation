@@ -1,0 +1,43 @@
+<div class="top">
+
+<h1> 24H Natation </h1>
+
+</div>
+<div class="nav">
+<ul>
+	<a id="nav:index" href="{% url 'index' %}"><li>
+		Accueil
+	</li></a>
+	<a id="nav:summary" href="{% url 'summary' %}"><li>
+		Activités
+	</li></a>
+	<a id="nav:classement" href="{% url 'ranking' %}"><li>
+		Classement
+	</li></a>
+	<a id="nav:contact" href="{% url 'contact' %}"><li>
+		Contact
+	</li></a>
+	<a id="nav:partener" href="{% url 'partener' %}"><li>
+		Partenaires
+	</li></a>
+	{% if user.is_staff %}
+	<a id="nav:nages" href="{% url 'nages' %}"><li>
+		Nages
+	</li></a>
+	{% endif %}
+	{% if user.is_superuser %}
+	<a id="nav:admin" href="{% url 'admin:index' %}"><li>
+		Admin
+	</li></a>
+	{% endif %}
+	{% if user.is_authenticated %}
+	<a id="nav:logout" href="{% url 'logout' %}"><li>
+		Déconnexion
+	</li></a>
+	{% else %}
+	<a id="nav:login" href="{% url 'login' %}"><li>
+		Connexion
+	</li></a>
+	{% endif %}
+</ul>
+</div>

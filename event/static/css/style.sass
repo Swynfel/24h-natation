@@ -1,0 +1,86 @@
+@import url("fonts.css")
+
+$xblue: #1a6681
+$xdark: #242424
+$xgrey: #484848
+$xlight: #d2dce0
+$xwhite: #dddddd
+
+$fontbase: 'open-sans'
+$fontnav: 'titillium'
+
+body
+	padding: 0px
+	margin: 0px
+	font-family: $fontbase
+	background-color: $xlight
+	color: $xdark
+
+a
+	text-decoration: none
+
+ul
+	box-sizing: border-box
+
+li
+	box-sizing: border-box
+
+div
+	padding: 0px
+
+.top
+	background-color: $xblue
+	color: white
+	padding: 40px
+	text-align: center
+	height: 100px
+	
+
+.nav
+	font-size: 20px
+	height: 52px
+	background-color: $xdark
+	color: $xwhite
+	text-align: center
+	font-family: $fontnav
+	font-style: normal
+	font-weight: 700
+
+	ul
+		margin: 0px
+		padding: 0px
+		height: 100%
+
+	li
+		list-style-type: none
+		display: inline-block
+		height: 100%
+		padding:
+			left: 8px
+			top: 14px
+			right: 8px
+			bottom: 0px
+
+	a
+		color: $xwhite
+
+	li:hover
+		background-color: $xblue
+
+.content
+	padding: 12px
+	font-family: $fontbase
+	text-align: center
+	color: $xgrey
+
+	h1
+		width: stretch
+		color: $xblue
+
+	h2
+		width: stretch
+		color: $xdark
+
+	h3
+		width: stretch
+		color: $xgrey

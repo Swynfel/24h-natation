@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+
+{% load front_tags %}
+
+<head>
+	<meta charset="UTF-8">
+	<title>24H Natation</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+<body>
+	{% include "header.html" %}
+	</div>
+	<div class="content">
+		<div>
+			{% block content %}
+	        {% endblock %}
+        </div>
+	</div>
+	{% include "footer.html" %}
+</body>
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+{% front_edit_scripts %}
+</html>

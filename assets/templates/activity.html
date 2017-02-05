@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load front_tags %}
+
+<h1>{{activity.name}}</h1>
+<h2>{{activity.info}}</h2>
+
+{% front_edit "content" request.path %}
+
+<p>This activity has no description</p>
+
+{% end_front_edit %}
+
+<h2>Inscription</h2>
+
+{% if state == 'in' %}
+
+<p>Vous êtes inscrit(e)</p>
+
+<a href="{% url 'optout' activity.id %}">Me désinscrire</a>
+
+{% elif state == 'out' %}
+
+<p>Vous n'êtes pas inscrit(e)</p>
+
+<a href="{% url 'optin' activity.id %}">M'inscrire</a>
+
+{% else %}
+
+<p>Vous devez vous connecter pour vous inscrire</p>
+
+{% endif %}
+
+{% front_edit_scripts %}
+
+{% endblock %}

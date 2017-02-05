@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load front_tags %}
+
+<h1>Planning</h1>
+
+{% for activity in activities %}
+
+<a id="sum:{{activity.id}}" href="{% url 'activity' activity.id %}">
+	<h2>{{activity.name}}</h2>
+	<p>{{activity.info}}</p>
+</a>
+{% endfor %}
+
+{% endblock %}

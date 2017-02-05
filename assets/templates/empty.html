@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load front_tags %}
+{% front_edit "content" request.path %}
+
+<h1>Error 404</h1>
+
+<p>Page not found</p>
+
+{% end_front_edit %}
+
+{% front_edit_scripts %}
+
+{% endblock %}

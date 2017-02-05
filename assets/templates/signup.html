@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<h1> Nouvel utilisateur local </h1>
+
+<div style="text-align: center; margin: auto">
+<form method="post" action="" style="text-align: right;max-width: 420px; margin: auto;">
+	{% csrf_token %}
+
+	{{ form.as_p }}
+    <button type="submit">Inscription</button>
+
+</form>
+</div>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+{{ form.media }}
+
+{% endblock %}

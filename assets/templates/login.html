@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+{% csrf_token %}
+
+<h1> Login Frankiz </h1>
+
+<form action="{% url 'frankiz_login' %}" >
+    <button name="login-frankiz" type="submit">Connexion</button>
+</form>
+
+<h1> Login local </h1>
+
+<form method="post" action="">
+	{% csrf_token %}
+
+	{{ form.as_p }}
+    <button name="login-local" type="submit">Connexion</button>
+
+</form>
+
+<h3> Vous n'avez pas de compte frankiz ? </h3>
+
+<form action="{% url 'local_signup' %}" >
+    <button name="registration" type="submit">Inscription</button>
+</form>
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+{{ form.media }}
+
+{% endblock %}

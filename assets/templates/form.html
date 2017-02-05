@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<form method="post" action="">
+	{% csrf_token %}
+
+	{{ nages.0.0.form.as_p }}
+    <button type="submit">Valider</button>
+</form>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+{{ nages.0.0.form.media }}
+
+{% endblock %}

@@ -1,0 +1,69 @@
+@import url("fonts.css");
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: "open-sans";
+  background-color: #d2dce0;
+  color: #242424; }
+
+a {
+  text-decoration: none; }
+
+ul {
+  box-sizing: border-box; }
+
+li {
+  box-sizing: border-box; }
+
+div {
+  padding: 0px; }
+
+.top {
+  background-color: #1a6681;
+  color: white;
+  padding: 40px;
+  text-align: center;
+  height: 100px; }
+
+.nav {
+  font-size: 20px;
+  height: 52px;
+  background-color: #242424;
+  color: #dddddd;
+  text-align: center;
+  font-family: "titillium";
+  font-style: normal;
+  font-weight: 700; }
+  .nav ul {
+    margin: 0px;
+    padding: 0px;
+    height: 100%; }
+  .nav li {
+    list-style-type: none;
+    display: inline-block;
+    height: 100%;
+    padding-left: 8px;
+    padding-top: 14px;
+    padding-right: 8px;
+    padding-bottom: 0px; }
+  .nav a {
+    color: #dddddd; }
+  .nav li:hover {
+    background-color: #1a6681; }
+
+.content {
+  padding: 12px;
+  font-family: "open-sans";
+  text-align: center;
+  color: #484848; }
+  .content h1 {
+    width: stretch;
+    color: #1a6681; }
+  .content h2 {
+    width: stretch;
+    color: #242424; }
+  .content h3 {
+    width: stretch;
+    color: #484848; }
+
+/*# sourceMappingURL=style.css.map */
