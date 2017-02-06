@@ -2,6 +2,7 @@ from django.db import models
 
 class Binet(models.Model):
 	name = models.CharField(max_length=64)
+	distance = models.IntegerField(blank=True,null=True)
 
 	def __str__(self):
 		return self.name
@@ -9,6 +10,7 @@ class Binet(models.Model):
 class Section(models.Model):
 	id = models.CharField(max_length=64,primary_key=True)
 	name = models.CharField(max_length=64)
+	distance = models.IntegerField(blank=True,null=True)
 
 	def __str__(self):
 		return self.name
@@ -31,11 +33,15 @@ from .user import User
 class Nage(models.Model):
 	nageur = models.ForeignKey(User,blank=True,null=True)
 	pour = models.ManyToManyField(Binet,blank=True)
-	backandforth = models.IntegerField("Aller-Retour",blank=True)
+	backandforth = models.IntegerField("Aller-Retour",blank=True,null=True)
 	remarque = models.CharField(max_length=256,blank=True)
 
 	def distance(self):
-		return int(backandforth)*50
+		try :
+			return int(self.backandforth)*50
+		except:
+			return 0
+		return 0
 
 	def __str__(self):
 		return str(self.nageur)+" "+str(self.distance())+"m"+" ("+", ".join(str(binet) for binet in self.pour.all())+")"
@@ -48,6 +54,3 @@ class Equipe(models.Model):
 
 	def __str__(self):
 		return "["+str(activite)+"] "+nom
-
-class UselessEmpty(models.Model):
-	nom=models.CharField(max_length=4)

@@ -10,6 +10,8 @@ a {
   text-decoration: none; }
 
 ul {
+  margin: auto;
+  padding: 0px;
   box-sizing: border-box; }
 
 li {
@@ -51,6 +53,21 @@ div {
   .nav li:hover {
     background-color: #1a6681; }
 
+.header_min {
+  background-color: #1a6681;
+  color: white;
+  padding: 0px;
+  text-align: center;
+  height: 24px; }
+  .header_min a {
+    padding: 0px; }
+  .header_min h1 {
+    margin-top: 0px;
+    padding: 0px;
+    width: stretch;
+    color: white;
+    font-size: 16px; }
+
 .content {
   padding: 12px;
   font-family: "open-sans";
@@ -65,5 +82,43 @@ div {
   .content h3 {
     width: stretch;
     color: #484848; }
+
+.nage {
+  font-size: 14px;
+  padding: 30px;
+  padding-top: 0px;
+  width: 320px;
+  height: 260px;
+  text-align: right;
+  list-style-type: none;
+  display: inline-block; }
+  .nage h3 {
+    text-align: center;
+    margin: auto; }
+  .nage .select2-container {
+    min-width: 170px; }
+  .nage input {
+    width: 160px; }
+  .nage button {
+    padding: 0px; }
+
+.board {
+  width: 23%;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin: auto;
+  display: inline-block; }
+  .board .left {
+    width: 8%;
+    float: left;
+    text-align: left; }
+  .board .middle {
+    width: 69%;
+    font-weight: 700;
+    float: left; }
+  .board .right {
+    width: 23%;
+    text-align: right;
+    float: right; }
 
 /*# sourceMappingURL=style.css.map */

@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Frankiz secret Key
 FKZ_KEY = None
-fkzkeyfile = os.path.join(BASE_DIR, "fkz.key")
+fkzkeyfile = os.path.join(BASE_DIR, ".keys/fkz.key")
 if not os.path.exists(fkzkeyfile):
     with open(fkzkeyfile, "wb") as f:
         f.write("None")
@@ -29,7 +29,7 @@ with open(fkzkeyfile, "r") as f:
     FKZ_KEY = f.read().strip()
 
 # SECURITY WARNING: keep the secret key used in production secret!
-secretkeyfile = os.path.join(BASE_DIR, "secret.key")
+secretkeyfile = os.path.join(BASE_DIR, ".keys/secret.key")
 if not os.path.exists(secretkeyfile):
     with open(secretkeyfile, "wb") as f:
         f.write(base64.b64_encode(os.urandom(30)))
@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'table_prefix',
     'front',
     'jquery',
     'constance',
@@ -108,6 +109,8 @@ WSGI_APPLICATION = 'natation24h.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+
+DB_PREFIX = 'X2015'
 
 if DEBUG:
   DATABASES = {

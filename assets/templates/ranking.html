@@ -1,10 +1,25 @@
-{% extends "base.html" %}
+{% extends "base_min.html" %}
 
 {% block content %}
 
-<h1>Classement</h1>
+<h1 style="margin: 0px">Classement</h1>
 
-<p>Page pas encore faite...</p>
-
-
+<ul>
+	<li class="board">
+		<h2>{{section_rank.name}}</h2>
+		<div>
+		{% for line in section_rank.content %}
+			<p class="left">{{line.rank}}.</p> <p class="middle">{{line.name}}</p> <p class="right">{{line.distance}}m</p>
+		{% endfor %}
+		</div>
+	</li>
+	<li class="board">
+		<div>
+		<h2>{{ranking.name}}</h2>
+		{% for line in ranking.content %}
+			<p class="left">{{line.rank}}.</p> <p class="middle">{{line.name}}</p> <p class="right">{{line.distance}}m</p>
+		{% endfor %}
+		</div>
+	</li>
+</ul>
 {% endblock %}

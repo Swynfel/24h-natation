@@ -57,8 +57,33 @@ def activity(request,activity):
 		state='out'
 	return render(request, "activity.html", activity=a, state=state)
 
+def recompute(request):
+	sections_score={}
+	binets_score={}
+	for p in User.objects.all():
+		d = 0
+		for nage in Nage.objects.filter(nageur=p):
+			d += nage.distance()
+			l = nage.pour.count()
+			for b in nage.pour.all() :
+				binets_score[str(b)]=binets_score.get(str(b),0)+(d/l)
+		if p.section!=None:
+			sections_score[p.section.id]=sections_score.get(p.section.id,0)+d
+		p.distance=d
+		p.save()
+	print(sections_score)
+	for s in Section.objects.all():
+		s.distance = int(sections_score.get(s.id,0))
+		s.save()
+	for b in Binet.objects.all():
+		b.distance = int(binets_score.get(b.id,0))
+		b.save()
+
 def ranking(request):
-	return render(request, "ranking.html")
+	section_rank = {'name':'Sections','content':Section.objects.order_by('-distance')}
+	binet_rank = {'name':'Binets','content_1':Binet.objects.order_by('-distance')[:10],'content_2':Binet.objects.order_by('-distance')[11:20]}
+	individual_rank = {'name':'Individuels','content':User.objects.order_by('-distance')}
+	return render(request, "ranking.html", section_rank=section_rank)
 
 def optin(request,activity):
 	a = Activity.objects.get(id=activity)
@@ -83,7 +108,7 @@ def hackldap(request):
 		sport = "sport_"+str(section.id)
 		connection.search('ou=eleves,dc=frankiz,dc=net','(&(&(objectclass=Person)(brMemberOf='+sport+'))(|(brMemberOf=promo_x2014)(brMemberOf=promo_x2015)))',attributes=['uid','givenName','sn','brPromo','mail','brMemberOf',])
 		for user in connection.entries:
-			f.create(user,section.name).save()
+			f.create(user,section.id).save()
 
 def hackview(request):
 	hackldap(request)
@@ -160,20 +185,21 @@ def nages(request):
 	def nagestr(x,y):
 		return "nage"+str(x)+"-"+str(y)
 	nages = []
+	COLORS=('white','red','orange','green','blue')
 	LINE_NUM=request.GET.get("line_num",3)
 	SWIM_NUM=request.GET.get("swim_num",5)
 	for line in range(0,LINE_NUM):
 		nages.append([])
 		for swim in range(0,SWIM_NUM):
-			nages[line].append({'id':nagestr(line,swim),'form':forms.NageForm(prefix=nagestr(line,swim)+":")})
+			nages[line].append({'id':nagestr(line,swim),'form':forms.NageForm(prefix=nagestr(line,swim)+":"),'color':COLORS[swim]})
 	if request.POST:
 		for line in range(0,LINE_NUM):
 			for swim in range(0,SWIM_NUM):
+				f=forms.NageForm(request.POST,prefix=nagestr(line,swim)+":")
+				nages[line][swim]['form']=f
 				if ("save-"+nagestr(line,swim) in request.POST) or ("save-all" in request.POST) or ("send-"+nagestr(line,swim) in request.POST):
-					f=forms.NageForm(request.POST,prefix=nagestr(line,swim)+":")
-					nages[line][swim]['form']=f
 					if f.is_valid():
 						f.save()
 					if "send-"+nagestr(line,swim) in request.POST:
 						nages[line][swim]['form']=forms.NageForm(prefix=nagestr(line,swim)+":")
-	return render(request, 'manynages.html', nages=nages)
+	return render(request, 'nages.html', nages=nages)

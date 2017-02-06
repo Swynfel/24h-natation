@@ -11,12 +11,6 @@ class User(defaultmodels.AbstractUser):
 	telephone = IntegerField(blank=True,null=True)
 	distance = IntegerField(blank=True,null=True)
 
-	def make_distance(self):
-		d = 0
-		for nage in Nage.objects.filter(nageur=self):
-			d += nage.distance()
-		self.distance=d
-
 class UserChangeForm(forms.UserChangeForm):
 	class Meta(forms.UserChangeForm.Meta):
 		model = User
