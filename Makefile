@@ -6,7 +6,7 @@ venv:
 	virtualenv --python=python3 venv
 
 secret.key:
-	cat /dev/urandom | tr -d -c "[a-zA-Z0-9]" | head -c 50 > secret.key
+	cat /dev/urandom | tr -d -c "[a-zA-Z0-9]" | head -c 50 > .keys/secret.key
 
 depends: venv
 	. venv/bin/activate; \
