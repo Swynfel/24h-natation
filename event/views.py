@@ -57,11 +57,13 @@ def activity(request,activity):
 		state='out'
 	return render(request, "activity.html", activity=a, state=state)
 
-@staff_member_required
+from bulk_update.helper import bulk_update
+
 def recompute(request):
 	sections_score={}
 	binets_score={}
-	for p in User.objects.all():
+	users = User.objects.all()
+	for p in users:
 		d = 0
 		for nage in Nage.objects.filter(nageur=p):
 			d += nage.distance()
@@ -71,14 +73,16 @@ def recompute(request):
 		if p.section!=None:
 			sections_score[p.section.id]=sections_score.get(p.section.id,0)+d
 		p.distance=d
-		p.save()
+	bulk_update(users,update_fields=['distance'])
 	print(sections_score)
-	for s in Section.objects.all():
+	sections = Section.objects.all()
+	for s in sections:
 		s.distance = int(sections_score.get(s.id,0))
-		s.save()
-	for b in Binet.objects.all():
-		b.distance = int(binets_score.get(b.id,0))
-		b.save()
+	bulk_update(sections,update_fields=['distance'])
+	binets = Binet.objects.all()
+	for b in binets:
+		b.distance = int(binets_score.get(str(b),0))
+	bulk_update(binets,update_fields=['distance'])
 
 def ranking(request):
 	recompute(request)

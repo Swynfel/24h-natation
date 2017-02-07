@@ -18,7 +18,7 @@
 		<li class="board">
 		<h2>{{binet_rank.name}}</h2>
 		<div>
-		{% for line in binet_rank.content1 %}
+		{% for line in binet_rank.content_1 %}
 			<div>
 				<p class="left">{{line.rank}}.</p> <p class="middle">{{line.data.name}}</p> <p class="right">{{line.data.distance}}m</p>
 			</div>
@@ -27,7 +27,7 @@
 	</li>
 		<li class="board">
 		<div>
-		{% for line in binet_rank.content2 %}
+		{% for line in binet_rank.content_2 %}
 			<div>
 				<p class="left">{{line.rank}}.</p> <p class="middle">{{line.data.name}}</p> <p class="right">{{line.data.distance}}m</p>
 			</div>

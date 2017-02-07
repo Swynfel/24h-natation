@@ -97,7 +97,7 @@ class FrankizLogin(object):
 	username = ''
 	f=Frankiz()
 
-	def FrankizLogin(self,username):
+	def __init__(self,username):
 		self.username = username
 
 	def frankiz_create(self):
