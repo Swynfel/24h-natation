@@ -45,10 +45,6 @@ ALLOWED_HOSTS = ["*"]
 
 AUTH_USER_MODEL = 'event.User'
 
-if not DEBUG:
-    CSRF_COOKIE_SECURE = True
-    SESSION_COOKIE_SECURE = True
-
 # Emails
 
 DEFAULT_FROM_EMAIL = "quentin.gendre@polytechnique.edu"
