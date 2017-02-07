@@ -9,15 +9,38 @@
 		<h2>{{section_rank.name}}</h2>
 		<div>
 		{% for line in section_rank.content %}
-			<p class="left">{{line.rank}}.</p> <p class="middle">{{line.name}}</p> <p class="right">{{line.distance}}m</p>
+			<div>
+				<p class="left">{{line.rank}}.</p> <p class="middle">{{line.data.name}}</p> <p class="right">{{line.data.distance}}m</p>
+			</div>
+		{% endfor %}
+		</div>
+	</li>
+		<li class="board">
+		<h2>{{binet_rank.name}}</h2>
+		<div>
+		{% for line in binet_rank.content1 %}
+			<div>
+				<p class="left">{{line.rank}}.</p> <p class="middle">{{line.data.name}}</p> <p class="right">{{line.data.distance}}m</p>
+			</div>
+		{% endfor %}
+		</div>
+	</li>
+		<li class="board">
+		<div>
+		{% for line in binet_rank.content2 %}
+			<div>
+				<p class="left">{{line.rank}}.</p> <p class="middle">{{line.data.name}}</p> <p class="right">{{line.data.distance}}m</p>
+			</div>
 		{% endfor %}
 		</div>
 	</li>
 	<li class="board">
+		<h2>{{individual_rank.name}}</h2>
 		<div>
-		<h2>{{ranking.name}}</h2>
-		{% for line in ranking.content %}
-			<p class="left">{{line.rank}}.</p> <p class="middle">{{line.name}}</p> <p class="right">{{line.distance}}m</p>
+		{% for line in individual_rank.content %}
+			<div>
+				<p class="left">{{line.rank}}.</p> <p class="middle">{{line.data.first_name}} {{line.data.last_name}}</p> <p class="right">{{line.data.distance}}m</p>
+			</div>
 		{% endfor %}
 		</div>
 	</li>

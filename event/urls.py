@@ -11,6 +11,7 @@ urlpatterns = [
 	url(r'^login/$', views.loginview, name='login'),
 	url(r'^logout/$', views.logoutview, name='logout'),
 	url(r'^login/frankiz/$', views.frankiz_ask, name='frankiz_login'),
+	url(r'^login/frankiz/answer/$', views.frankiz_login, name='frankiz_answer'),
 	url(r'^login/local/$', views.loginview, name='local_login'),
 	url(r'^signup/local/$', views.signupview, name='local_signup'),
 	url(r'^nages/$',views.nages, name='nages'),

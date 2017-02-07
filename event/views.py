@@ -57,6 +57,7 @@ def activity(request,activity):
 		state='out'
 	return render(request, "activity.html", activity=a, state=state)
 
+@staff_member_required
 def recompute(request):
 	sections_score={}
 	binets_score={}
@@ -80,10 +81,14 @@ def recompute(request):
 		b.save()
 
 def ranking(request):
-	section_rank = {'name':'Sections','content':Section.objects.order_by('-distance')}
-	binet_rank = {'name':'Binets','content_1':Binet.objects.order_by('-distance')[:10],'content_2':Binet.objects.order_by('-distance')[11:20]}
-	individual_rank = {'name':'Individuels','content':User.objects.order_by('-distance')}
-	return render(request, "ranking.html", section_rank=section_rank)
+	recompute(request)
+	s = Section.objects.order_by('-distance')
+	section_rank = {'name':'Sections','content':[{'rank':i+1,'data':s[i]} for i in range(0,len(s))]}
+	b = Binet.objects.order_by('-distance')[:20]
+	binet_rank = {'name':'Binets','content_1':[{'rank':i+1,'data':b[i]} for i in range(0,min(10,len(b)))],'content_2':[{'rank':i+1,'data':b[i]} for i in range(10,min(20,len(b)))]}
+	d = User.objects.exclude(distance=0).order_by('-distance')[:15]
+	individual_rank = {'name':'Individuels','content':[{'rank':i+1,'data':d[i]} for i in range(0,min(15,len(d)))]}
+	return render(request, "ranking.html", section_rank=section_rank,binet_rank=binet_rank,individual_rank=individual_rank)
 
 def optin(request,activity):
 	a = Activity.objects.get(id=activity)
@@ -140,7 +145,7 @@ def logoutview(request):
 
 def frankiz_ask(request):
 	ts = time.time()
-	page = r"http://24hnatation.binets.fr/login/frankiz/"
+	page = r"http://24hnatation.binets.fr/login/frankiz/answer/"
 	r = json.dumps(["names"])
 	h = hashlib.md5((str(ts) + str(page) + str(FKZ_KEY) + str(r)).encode('utf-8')).hexdigest()
 	return HttpResponseRedirect("https://www.frankiz.net/remote?"+urlencode([('timestamp',ts),('site',page),('hash',h),('request',r)]))
