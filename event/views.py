@@ -59,6 +59,7 @@ def activity(request,activity):
 
 from bulk_update.helper import bulk_update
 
+@staff_member_required
 def recompute(request):
 	sections_score={}
 	binets_score={}
