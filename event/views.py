@@ -114,8 +114,9 @@ def hackldap(request):
 	connection = ldap3.Connection(f.serveur)
 	connection.bind()
 	for section in Section.objects.all():
-		sport = "sport_"+str(section.id)
-		connection.search('ou=eleves,dc=frankiz,dc=net','(&(&(objectclass=Person)(brMemberOf='+sport+'))(|(brMemberOf=promo_x2014)(brMemberOf=promo_x2015)))',attributes=['uid','givenName','sn','brPromo','mail','brMemberOf',])
+		s,year = str(section.id).split('_')
+		sport = "sport_"+s
+		connection.search('ou=eleves,dc=frankiz,dc=net','(&(&(objectclass=Person)(brMemberOf='+sport+'))(brMemberOf=promo_x20'+year+'))',attributes=['uid','givenName','sn','brPromo','mail','brMemberOf',])
 		for user in connection.entries:
 			f.create(user,section.id).save()
 
