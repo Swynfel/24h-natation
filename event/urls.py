@@ -6,7 +6,7 @@ from . import views,autocomplete,forms
 urlpatterns = [
 	url(r'^$', views.simple, name='index'),
 	url(r'^summary/$', views.summary, name='summary'),
-	url(r'^partener/$', views.simple, name='partener'),
+	url(r'^partner/$', views.simple, name='partner'),
 	url(r'^contact/$', views.simple, name='contact'),
 	url(r'^login/$', views.loginview, name='login'),
 	url(r'^logout/$', views.logoutview, name='logout'),
