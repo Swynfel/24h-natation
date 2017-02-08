@@ -89,7 +89,7 @@ class RegisterForm(forms.Form):
 		data=self.cleaned_data
 		section,c=Section.objects.get_or_create(id='ext',name="Exté")
 		user = User(username=data['username'],nickname=data['username'],section=section,first_name=data['first_name'],last_name=data['last_name'],email=data['mail'],telephone=data['telephone'])
-		user.set_password(password=data['password'])
+		user.set_password(data['password'])
 		section.save()
 		user.save()
 
