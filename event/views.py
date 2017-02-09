@@ -17,7 +17,7 @@ import hashlib
 import ldap3
 from .forms import FrankizLogin, Frankiz
 from django.utils.http import urlencode
-from django.contrib.auth import logout
+from django.contrib.auth import login,logout
 
 def render(request, template, status=200, **context):
 	content = loader.get_template(template)
