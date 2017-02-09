@@ -110,8 +110,7 @@ class FrankizLogin(object):
 		user=User.objects.none()
 		if not User.objects.filter(username=self.username).exists():
 			self.frankiz_create()
-			return User.objects.get(username=self.username)
-		return user
+		return User.objects.get(username=self.username)
 
 	def frankiz_log(self,request):
 		self.frankiz_user()
