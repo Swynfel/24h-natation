@@ -173,6 +173,7 @@ def frankiz_login(request):
 		return HttpResponseRedirect(reverse("login"))
 
 	f = FrankizLogin(str(json.loads(response)['hruid']))
+	user = f.frankiz_user()
 	login(request,user)
 
 	return HttpResponseRedirect(reverse('index'))
