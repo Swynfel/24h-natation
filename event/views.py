@@ -89,9 +89,9 @@ def ranking(request):
 	recompute(request)
 	s = Section.objects.order_by('-distance')
 	section_rank = {'name':'Sections','content':[{'rank':i+1,'data':s[i]} for i in range(0,len(s))]}
-	b = Binet.objects.order_by('-distance')[:20]
-	binet_rank = {'name':'Binets','content_1':[{'rank':i+1,'data':b[i]} for i in range(0,min(10,len(b)))],'content_2':[{'rank':i+1,'data':b[i]} for i in range(10,min(20,len(b)))]}
-	d = User.objects.exclude(distance=0).order_by('-distance')[:15]
+	b = Binet.objects.order_by('-distance')[:40]
+	binet_rank = {'name':'Binets','content_1':[{'rank':i+1,'data':b[i]} for i in range(0,min(20,len(b)))],'content_2':[{'rank':i+1,'data':b[i]} for i in range(20,min(20,len(b)))]}
+	d = User.objects.exclude(distance=0).order_by('-distance')[:20]
 	individual_rank = {'name':'Individuels','content':[{'rank':i+1,'data':d[i]} for i in range(0,min(15,len(d)))]}
 	return render(request, "ranking.html", section_rank=section_rank,binet_rank=binet_rank,individual_rank=individual_rank)
 

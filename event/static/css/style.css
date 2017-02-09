@@ -108,6 +108,8 @@ div {
   padding-right: 50px;
   margin: auto;
   display: inline-block; }
+  .board p {
+    margin-bottom: 8px; }
   .board .left {
     width: 8%;
     float: left;
