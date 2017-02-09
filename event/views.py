@@ -206,7 +206,7 @@ def nages(request):
 	for line in range(0,LINE_NUM):
 		nages.append([])
 		for swim in range(0,SWIM_NUM):
-			nages[line].append({'id':nagestr(line,swim),'name':'Line '+str(line)+" - Paxon "+str(swim),'form':forms.NageForm(prefix=nagestr(line,swim)+":"),'color':COLORS[swim]})
+			nages[line].append({'id':nagestr(line,swim),'name':'Ligne '+str(line)+" - Pax "+str(swim),'form':forms.NageForm(prefix=nagestr(line,swim)+":"),'color':COLORS[swim]})
 	if request.POST:
 		for line in range(0,LINE_NUM):
 			for swim in range(0,SWIM_NUM):
