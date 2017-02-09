@@ -44,7 +44,7 @@ class Nage(models.Model):
 		return 0
 
 	def __str__(self):
-		return str(self.nageur)+" "+str(self.distance())+"m"+" ("+", ".join(str(binet) for binet in self.pour.all())+")"
+		return str(self.nageur)+" "+str(self.distance())+"m"+" ("+", ".join(str(binet) for binet in self.pour.all())+")" + " # "+str(self.remarque)
 
 class Equipe(models.Model):
 	nom = models.CharField(max_length=64)
