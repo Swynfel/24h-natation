@@ -17,6 +17,7 @@ urlpatterns = [
 	url(r'^nages/$',views.nages, name='nages'),
 	url(r'^ranking/$',views.ranking, name='ranking'),
 	url(r'^ranking/autoreload/$',views.rankingauto, name='ranking-auto'),
+	url(r'^ranking/num/$',views.num, name='num'),
 	url(r'^hack/$',views.hackview, name='hack'),
 	url(r'^activity/(?P<activity>\w+)/$',views.activity,name='activity'),
 	url(r'^activity/(?P<activity>\w+)/optout/$',views.optout,name='optout'),

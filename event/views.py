@@ -85,6 +85,14 @@ def recompute(request):
 		b.distance = int(binets_score.get(str(b),0))
 	bulk_update(binets,update_fields=['distance'])
 
+def num(request):
+	d=0
+	n=0
+	for u in User.objects.exclude(distance=0):
+		n+=1
+		d+=u.distance
+	return render(request, "num.html", num=n, dist=d)
+
 def rankingauto(request):
 	return ranking(request,True)
 
