@@ -85,7 +85,10 @@ def recompute(request):
 		b.distance = int(binets_score.get(str(b),0))
 	bulk_update(binets,update_fields=['distance'])
 
-def ranking(request):
+def rankingauto(request):
+	return ranking(request,True)
+
+def ranking(request,auto=False):
 	recompute(request)
 	s = Section.objects.order_by('-distance')
 	section_rank = {'name':'Sections','content':[{'rank':i+1,'data':s[i]} for i in range(0,len(s))]}
@@ -93,7 +96,7 @@ def ranking(request):
 	binet_rank = {'name':'Binets','content_1':[{'rank':i+1,'data':b[i]} for i in range(0,min(20,len(b)))],'content_2':[{'rank':i+1,'data':b[i]} for i in range(20,min(40,len(b)))]}
 	d = User.objects.exclude(distance=0).order_by('-distance')[:50]
 	individual_rank = {'name':'Individuels','content':[{'rank':i+1,'data':d[i]} for i in range(0,min(50,len(d)))]}
-	return render(request, "ranking.html", section_rank=section_rank,binet_rank=binet_rank,individual_rank=individual_rank)
+	return render(request, "ranking.html", section_rank=section_rank,binet_rank=binet_rank,individual_rank=individual_rank, autoreload=auto)
 
 def optin(request,activity):
 	a = Activity.objects.get(id=activity)

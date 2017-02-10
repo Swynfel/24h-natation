@@ -2,6 +2,12 @@
 
 {% block content %}
 
+{% if autoreload %}
+
+<script type="text/javascript">setTimeout(function(){ location.reload(); }, 60000);</script>
+
+{% endif %}
+
 <h1 style="margin: 0px">Classement</h1>
 
 <ul>

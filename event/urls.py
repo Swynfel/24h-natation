@@ -16,6 +16,7 @@ urlpatterns = [
 	url(r'^signup/local/$', views.signupview, name='local_signup'),
 	url(r'^nages/$',views.nages, name='nages'),
 	url(r'^ranking/$',views.ranking, name='ranking'),
+	url(r'^ranking/autoreload/$',views.rankingauto, name='ranking-auto'),
 	url(r'^hack/$',views.hackview, name='hack'),
 	url(r'^activity/(?P<activity>\w+)/$',views.activity,name='activity'),
 	url(r'^activity/(?P<activity>\w+)/optout/$',views.optout,name='optout'),
