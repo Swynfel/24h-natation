@@ -70,7 +70,7 @@ def recompute(request):
 			d += nage.distance()
 			l = nage.pour.count()
 			for b in nage.pour.all() :
-				binets_score[str(b)]=binets_score.get(str(b),0)+(d/l)
+				binets_score[str(b)]=binets_score.get(str(b),0)+(nage.distance()/l)
 		if p.section!=None:
 			sections_score[p.section.id]=sections_score.get(p.section.id,0)+d
 		p.distance=d
