@@ -1,4 +1,5 @@
 @import url("fonts.css");
+@import url("nav.css");
 body {
   padding: 0px;
   margin: 0px;
@@ -26,32 +27,6 @@ div {
   padding: 40px;
   text-align: center;
   height: 100px; }
-
-.nav {
-  font-size: 20px;
-  height: 52px;
-  background-color: #242424;
-  color: #dddddd;
-  text-align: center;
-  font-family: "titillium";
-  font-style: normal;
-  font-weight: 700; }
-  .nav ul {
-    margin: 0px;
-    padding: 0px;
-    height: 100%; }
-  .nav li {
-    list-style-type: none;
-    display: inline-block;
-    height: 100%;
-    padding-left: 8px;
-    padding-top: 14px;
-    padding-right: 8px;
-    padding-bottom: 0px; }
-  .nav a {
-    color: #dddddd; }
-  .nav li:hover {
-    background-color: #1a6681; }
 
 .header_min {
   background-color: #1a6681;
