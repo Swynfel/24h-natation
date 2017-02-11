@@ -9,9 +9,9 @@
 	<h2>{{name}}</h2>
 	<div>
 	{% for id,line in data.items %}
-		<div>
-			<p class="left">{{line.rank}}.</p> <p class="middle">{{line.name}}</p> <p class="right">{{line.score}}m</p>
-		</div>
+		<ul class='line'>
+			<li class="left">{{line.rank}}.</li> <li class="middle">{{line.name}}</li> <li class="right">{{line.score}}m</li>
+		</ul>
 	{% endfor %}
 	</div>
 </li>

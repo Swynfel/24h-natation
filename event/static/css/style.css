@@ -102,16 +102,29 @@ div {
   .nage button {
     padding: 0px; }
 
+.flex {
+  display: flex;
+  display: -webkit-flex; }
+
 .board {
-  width: 23%;
-  padding-left: 50px;
-  padding-right: 50px;
+  width: 24%;
+  padding-left: 20px;
+  padding-right: 20px;
   margin: auto;
-  display: inline-block; }
+  display: inline-block;
+  text-overflow: ellipsis; }
+  .board div {
+    height: 28px; }
+  .board .line {
+    text-overflow: clip;
+    overflow: auto; }
+  .board li {
+    margin-bottom: 8px;
+    list-style-type: none; }
   .board p {
     margin-bottom: 8px; }
   .board .left {
-    width: 8%;
+    width: 6%;
     float: left;
     text-align: left; }
   .board .middle {
@@ -119,7 +132,7 @@ div {
     font-weight: 700;
     float: left; }
   .board .right {
-    width: 23%;
+    width: 24%;
     text-align: right;
     float: right; }
 

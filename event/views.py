@@ -106,7 +106,7 @@ def rankingbinet(request,binet):
 	for nage in Nage.objects.filter(pour__in=[binet]):
 		n = str(nage.nageur)
 		l = nage.pour.count()
-		binets_score[n]=binets_score.get(n,0)+(nage.distance()/l)	
+		binets_score[n]=binets_score.get(n,0)+(nage.distance()/l)
 	data={}
 	for key in binets_score.keys():
 		n=User.objects.get(username=key)

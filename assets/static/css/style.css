@@ -107,7 +107,8 @@ div {
   padding-left: 50px;
   padding-right: 50px;
   margin: auto;
-  display: inline-block; }
+  display: inline-block;
+  text-overflow: ellipsis; }
   .board p {
     margin-bottom: 8px; }
   .board .left {

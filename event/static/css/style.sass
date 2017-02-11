@@ -126,19 +126,35 @@ div
 	button
 		padding: 0px
 
+.flex
+	display: flex
+	display: -webkit-flex
+
 .board
-	width: 23%
+	width: 24%
 	padding:
-		left: 50px
-		right: 50px
+		left: 20px
+		right: 20px
 	margin: auto
 	display: inline-block
+	text-overflow: ellipsis
+
+	div
+		height: 28px
+
+	.line
+		text-overflow: clip
+		overflow: auto
+
+	li
+		margin-bottom: 8px
+		list-style-type: none
 
 	p
 		margin-bottom: 8px
 
 	.left
-		width: 8%
+		width: 6%
 		float: left
 		text-align: left
 
@@ -148,6 +164,6 @@ div
 		float: left
 
 	.right
-		width: 23%
+		width: 24%
 		text-align: right
 		float: right

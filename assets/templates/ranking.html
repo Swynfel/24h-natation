@@ -10,14 +10,14 @@
 
 <h1 style="margin: 0px">Classement</h1>
 
-<ul>
+<ul class="flex">
 	<li class="board">
 		<h2>{{section_rank.name}}</h2>
 		<div>
 		{% for line in section_rank.content %}
-			<div>
-				<p class="left">{{line.rank}}.</p> <p class="middle">{{line.data.name}}</p> <p class="right">{{line.data.distance}}m</p>
-			</div>
+			<ul class="line">
+				<li class="left">{{line.rank}}.</li> <li class="middle">{{line.data.name}}</li> <li class="right">{{line.data.distance}}m</li>
+			</ul>
 		{% endfor %}
 		</div>
 	</li>
@@ -27,19 +27,19 @@
 		</a>
 		<div>
 		{% for line in binet_rank.content_1 %}
-			<div>
-				<p class="left">{{line.rank}}.</p> <p class="middle">{{line.data.name}}</p> <p class="right">{{line.data.distance}}m</p>
-			</div>
+			<ul class="line">
+				<li class="left">{{line.rank}}.</li> <li class="middle">{{line.data.name}}</li> <li class="right">{{line.data.distance}}m</li>
+			</ul>
 		{% endfor %}
 		</div>
 	</li>
-		<li class="board">
+	<li class="board">
 		<h2>---</h2>
 		<div>
 		{% for line in binet_rank.content_2 %}
-			<div>
-				<p class="left">{{line.rank}}.</p> <p class="middle">{{line.data.name}}</p> <p class="right">{{line.data.distance}}m</p>
-			</div>
+			<ul class="line">
+				<li class="left">{{line.rank}}.</li> <li class="middle">{{line.data.name}}</li> <li class="right">{{line.data.distance}}m</li>
+			</ul>
 		{% endfor %}
 		</div>
 	</li>
@@ -49,9 +49,9 @@
 		</a>
 		<div>
 		{% for line in individual_rank.content %}
-			<div>
-				<p class="left">{{line.rank}}.</p> <p class="middle">{{line.data.first_name}} {{line.data.last_name}}</p> <p class="right">{{line.data.distance}}m</p>
-			</div>
+			<ul class="line">
+				<li class="left">{{line.rank}}.</li> <li class="middle">{{line.data.first_name}} {{line.data.last_name}}</li> <li class="right">{{line.data.distance}}m</li>
+			</ul>
 		{% endfor %}
 		</div>
 	</li>
