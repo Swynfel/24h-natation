@@ -105,7 +105,11 @@ div {
 
 .flex {
   display: flex;
-  display: -webkit-flex; }
+  display: -webkit-flex;
+  list-style: none; }
+
+.line {
+  list-style: none; }
 
 .board {
   width: 24%;
