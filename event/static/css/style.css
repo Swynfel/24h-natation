@@ -1,6 +1,5 @@
 @import url("fonts.css");
 body {
-  list-style-type: none;
   padding: 0px;
   margin: 0px;
   font-family: "open-sans";
@@ -105,11 +104,7 @@ div {
 
 .flex {
   display: flex;
-  display: -webkit-flex;
-  list-style: none; }
-
-.line {
-  list-style: none; }
+  display: -webkit-flex; }
 
 .board {
   width: 24%;
@@ -124,7 +119,7 @@ div {
     text-overflow: clip;
     overflow: auto; }
   .board ul {
-    list-style: none; }
+    height: stretch; }
   .board li {
     margin-bottom: 8px;
     list-style-type: none; }
