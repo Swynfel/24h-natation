@@ -119,10 +119,8 @@ div {
     text-overflow: clip;
     overflow: auto; }
   .board ul {
-    height: stretch; }
-  .board li {
-    margin-bottom: 8px;
-    list-style-type: none; }
+    height: stretch;
+    list-style: none; }
   .board p {
     margin-bottom: 8px; }
   .board .left {
