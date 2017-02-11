@@ -1,0 +1,20 @@
+{% extends "base_min.html" %}
+
+{% block content %}
+
+<a href="{% url 'ranking' %}">
+<h1 style="margin: 0px">Classement</h1>
+</a>
+
+<li class="board">
+	<h2>{{rank.name}}</h2>
+	<div>
+	{% for line in rank.content %}
+		<div>
+			<p class="left">{{line.rank}}.</p> <p class="middle">{{line.data.name}}{{line.data.first_name}} {{line.data.last_name}}</p> <p class="right">{{line.data.distance}}m</p>
+		</div>
+	{% endfor %}
+	</div>
+</li>
+
+{% endblock %}

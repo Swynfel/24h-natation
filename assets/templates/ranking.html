@@ -22,7 +22,9 @@
 		</div>
 	</li>
 		<li class="board">
-		<h2>{{binet_rank.name}}</h2>
+		<a href="{% url 'ranking-binets' %}">
+			<h2>{{binet_rank.name}}</h2>
+		</a>
 		<div>
 		{% for line in binet_rank.content_1 %}
 			<div>
@@ -42,7 +44,9 @@
 		</div>
 	</li>
 	<li class="board">
-		<h2>{{individual_rank.name}}</h2>
+		<a href="{% url 'ranking-nageurs' %}">
+			<h2>{{individual_rank.name}}</h2>
+		</a>
 		<div>
 		{% for line in individual_rank.content %}
 			<div>

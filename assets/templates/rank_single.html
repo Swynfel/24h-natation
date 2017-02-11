@@ -1,0 +1,18 @@
+{% extends "base_min.html" %}
+
+{% block content %}
+
+
+<h1 style="margin: 0px">Classement</h1>
+
+<li class="board">
+	<h2>{{name}}</h2>
+	<div>
+	{% for id,line in data.items %}
+		<div>
+			<p class="left">{{line.rank}}.</p> <p class="middle">{{line.name}}</p> <p class="right">{{line.score}}m</p>
+		</div>
+	{% endfor %}
+	</div>
+</li>
+{% endblock %}

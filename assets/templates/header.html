@@ -8,18 +8,22 @@
 	<a id="nav:index" href="{% url 'index' %}"><li>
 		Accueil
 	</li></a>
+	<!--
 	<a id="nav:summary" href="{% url 'summary' %}"><li>
 		Activités
 	</li></a>
+	-->
 	<a id="nav:classement" href="{% url 'ranking' %}"><li>
 		Classement
 	</li></a>
 	<a id="nav:contact" href="{% url 'contact' %}"><li>
 		Contact
 	</li></a>
+	<!--
 	<a id="nav:partner" href="{% url 'partner' %}"><li>
 		Partenaires
 	</li></a>
+	-->
 	{% if user.is_staff %}
 	<a id="nav:nages" href="{% url 'nages' %}"><li>
 		Nages

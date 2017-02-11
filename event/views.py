@@ -96,6 +96,34 @@ def num(request):
 def rankingauto(request):
 	return ranking(request,True)
 
+@staff_member_required
+def rankingbinet(request,binet):
+	binet = str(binet).replace('_',' ')
+	binet = Binet.objects.get(name=binet)
+	if binet==None:
+		raise Http404("Le binet n'existe pas")
+	binets_score={}
+	for nage in Nage.objects.filter(pour__in=[binet]):
+		n = str(nage.nageur)
+		l = nage.pour.count()
+		binets_score[n]=binets_score.get(n,0)+(nage.distance()/l)	
+	data={}
+	for key in binets_score.keys():
+		n=User.objects.get(username=key)
+		s=binets_score[str(n.username)]
+		data[key]={'name':str(n.first_name)+' '+str(n.last_name),'score':s}
+	return render(request, "rank_single.html", name=str(binet.distance),data=data, total=binet.distance)
+
+def rankingnageurs(request):
+	d = User.objects.exclude(distance=0).order_by('-distance')
+	individual_rank = {'name':'Individuels','content':[{'rank':i+1,'data':d[i]} for i in range(0,len(d))]}
+	return render(request, "rank.html", rank=individual_rank)
+
+def rankingbinets(request):
+	b = Binet.objects.exclude(distance=0).order_by('-distance')
+	binet_rank = {'name':'Binets','content':[{'rank':i+1,'data':b[i]} for i in range(0,len(b))]}
+	return render(request, "rank.html", rank=binet_rank)
+
 def ranking(request,auto=False):
 	recompute(request)
 	s = Section.objects.order_by('-distance')
